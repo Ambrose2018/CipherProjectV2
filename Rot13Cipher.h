@@ -22,7 +22,7 @@ private:
     string inEncrypt;
     string outEncrypt;
     string cipherAlphabet;
-    string key1, key2;
+    string key1, key2, key2A, key2B, key2C;
 
     int FindIndex(char currChar);
 
