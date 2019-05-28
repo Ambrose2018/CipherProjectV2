@@ -159,7 +159,9 @@ void displaySubmenu1(void) {
 
     // cerr << "Entering _dSM1" << endl;
 
+    cout << "\n";
     CaesarCipher cc = CaesarCipher();
+    cout << "\n";
 
     string userInput;
     string encrypted;
@@ -170,19 +172,19 @@ void displaySubmenu1(void) {
 
     while (doit) {
 
-        userInput = inputString("Enter something to encrypt: ");
-        newShift = inputInteger("Enter a shift number: ");
+        userInput = inputString("\nEnter a message to encrypt using the Caesar Cipher: ");
+        newShift = inputInteger("\nEnter a shift number: ");
 
         encrypted = cc.Encrypt(userInput, newShift);
 
-        cout << "encrypted with a shift of " << newShift << " : " << encrypted << endl;
+        cout << "\nMessage encrypted with a shift of +" << newShift << " : " << encrypted << endl;
 
         newShift *= -1;
         decrypted = cc.Encrypt(encrypted, newShift);
 
-        cout << "decrypted with a shift of " << newShift << " : " << decrypted << endl;
+        cout << "\nMessage decrypted with a shift of " << newShift << " : " << decrypted << endl;
 
-        doit = inputYNchoice("Encrypt/Decrypt? (y/n) ");
+        doit = inputYNchoice("\n\nEncrypt/Decrypt another message? (y/n) ");
 
     }
 
@@ -195,7 +197,11 @@ void displaySubmenu2(void) {
 
     // cerr << "Entering _dSM2" << endl;
 
+    clearScreen();
+
+    cout << "\n";
     Rot13Cipher cc = Rot13Cipher();
+    cout << "\n";
 
     string userInput;
     string encrypted;
@@ -206,21 +212,22 @@ void displaySubmenu2(void) {
 
     while (doit) {
 
-        userInput = inputString("Enter something to encrypt: ");
+        userInput = inputString("\nEnter a message to encrypt using ROT-13 cipher: ");
         // newShift is locked at +13 for ROT-13
         // newShift = inputInteger("Enter a shift number: ");
 
         encrypted = cc.Encrypt(userInput, newShift);
 
-        cout << "encrypted with a shift of " << newShift << " : " << encrypted << endl;
+        cout << "\nMessage encrypted with a shift of +" << newShift << " : " << encrypted << endl;
 
         // newShift is locked at +13 for ROT-13
         // newShift *= -1;
         decrypted = cc.Encrypt(encrypted, newShift);
 
-        cout << "decrypted with a shift of " << newShift << " : " << decrypted << endl;
+        cout << "\nMessage decrypted with a shift of +" << newShift << " : " << decrypted << endl;
 
-        doit = inputYNchoice("Encrypt/Decrypt? (y/n) ");
+        doit = inputYNchoice("\n\nEncrypt/Decrypt another message? (y/n) ");
+
     }
 
     return;
@@ -232,7 +239,9 @@ void displaySubmenu3(void) {
 
     // cerr << "Entering _dSM3" << endl;
 
+    cout << "\n";
     Rot47Cipher cc = Rot47Cipher();
+    cout << "\n";
 
     string userInput;
     string encrypted;
@@ -243,21 +252,22 @@ void displaySubmenu3(void) {
 
     while (doit) {
 
-        userInput = inputString("Enter something to encrypt: ");
-        // newShift is locked at +47 for ROT-47
+        userInput = inputString("\nEnter a message to encrypt using ROT-47 cipher: ");
+        // newShift is locked at +13 for ROT-13
         // newShift = inputInteger("Enter a shift number: ");
 
         encrypted = cc.Encrypt(userInput, newShift);
 
-        cout << "encrypted with a shift of " << newShift << " : " << encrypted << endl;
+        cout << "\nMessage encrypted with a shift of +" << newShift << " : " << encrypted << endl;
 
         // newShift is locked at +47 for ROT-47
         // newShift *= -1;
         decrypted = cc.Encrypt(encrypted, newShift);
 
-        cout << "decrypted with a shift of " << newShift << " : " << decrypted << endl;
+        cout << "\nMessage decrypted with a shift of +" << newShift << " : " << decrypted << endl;
 
-        doit = inputYNchoice("Encrypt/Decrypt? (y/n) ");
+        doit = inputYNchoice("\n\nEncrypt/Decrypt another message? (y/n) ");
+
     }
 
     return;
