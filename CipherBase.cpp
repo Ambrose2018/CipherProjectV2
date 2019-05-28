@@ -14,12 +14,10 @@ using namespace std;
 
 int CipherBase::FindIndex(char currChar) {
 
-    bool found = false;
     int index = -1;  // preset index to default for not found.
 
     for (unsigned int i = 0; i < cipherAlphabet.size(); ++i) {
         if (currChar == cipherAlphabet.at(i)) {
-            found = true;
             index = i;
         }
     }

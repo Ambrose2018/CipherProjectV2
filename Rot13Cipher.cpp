@@ -15,16 +15,23 @@ using namespace std;
 // Default constructor
 Rot13Cipher::Rot13Cipher() {
     cipherAlphabet = "abcdefghijklmnopqrstuvwxyz";
+
+    key1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    key2 = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+
+    cout << endl;
+    cout << "Key #1: " << key1 << endl;
+    cout << "Key #2: " << key2 << endl;
+    cout << endl;
+
 };
 
 int Rot13Cipher::FindIndex(char currChar) {
 
-    bool found = false;
     int index = -1;  // preset index to default for not found.
 
     for (unsigned int i = 0; i < cipherAlphabet.size(); ++i) {
         if (currChar == cipherAlphabet.at(i)) {
-            found = true;
             index = i;
         }
     }
@@ -33,23 +40,34 @@ int Rot13Cipher::FindIndex(char currChar) {
 
 };
 
-//limit shift input range OR use modulo
 string Rot13Cipher::Encrypt(string inputMsg, int shift) {
 
-    string tmpString = "";
-    outEncrypt = "";
-    inEncrypt = inputMsg;
+//    string tmpString = "";
+//    outEncrypt = "";
+//    inEncrypt = inputMsg;
     int newPos = 0;
-    /* - NOTE: variable newPos is assigned by expressions that resolve to type (unsigned long long int).
-       - Do **NOT** change or force cast these types because it will cause an out_of_range exception. 		*/
-    int currPos = 0;
-    char tmpChar = 'x';
-    bool wasUpper = false;
+//    /* - NOTE: variable newPos is assigned by expressions that resolve to type (unsigned long long int).
+//       - Do **NOT** change or force cast these types because it will cause an out_of_range exception. 		*/
+//    int currPos = 0;
+//    char tmpChar = 'x';
+//    bool wasUpper = false;
+    char charIN;
+    char charOUT;
+
 
     //Iterate through string parameter inputMsg
     for (unsigned int i = 0; i < inputMsg.size(); ++i) {
 
-        //Keep track of uppercase characters before casting to lowercase
+        newPos = FindIndex(inputMsg.at(i));
+
+        if (newPos >= 0) {
+            outEncrypt.append(key2.at(newPos));   // translate current char from key1 to key2.
+        } else {
+            outEncrypt.append(key1.at(newPos));   // unidentified character remains as-is in output,
+        }
+
+    }
+    //Keep track of uppercase characters before casting to lowercase
         if (isupper(inEncrypt.at(i))) {
             wasUpper = true;
             //Change uppercase to lowercase character (to find in alphabet), remember upper

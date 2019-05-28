@@ -15,16 +15,33 @@ using namespace std;
 // Default constructor
 Rot47Cipher::Rot47Cipher() {
     cipherAlphabet = "abcdefghijklmnopqrstuvwxyz";
+
+    //   = "123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_1234";
+    key1 = "                                                                                              ";
+    key2 = "                                                                                              ";
+
+    for (int i = 0; i < 47; ++i) {
+
+        key1.at(i) = static_cast<char>('!' + i);
+        key1.at(i + 47) = static_cast<char>('P' + i);
+        key2.at(i) = static_cast<char>('P' + i);
+        key2.at(i + 47) = static_cast<char>('!' + i);
+
+    }
+
+    cout << endl;
+    cout << "Key #1: " << key1 << endl;
+    cout << "Key #2: " << key2 << endl;
+    cout << endl;
+
 };
 
 int Rot47Cipher::FindIndex(char currChar) {
 
-    bool found = false;
     int index = -1;  // preset index to default for not found.
 
     for (unsigned int i = 0; i < cipherAlphabet.size(); ++i) {
         if (currChar == cipherAlphabet.at(i)) {
-            found = true;
             index = i;
         }
     }
